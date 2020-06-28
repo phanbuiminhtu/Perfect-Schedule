@@ -1,0 +1,94 @@
+<!-- 
+addTaskPage.html
+html for main window that opens on startup
+v3.9 ; 6/5/2020
+
+Author: Tu Phan
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+		<title>Add Task</title>
+		<script src="addTask.js"></script> 
+	</head>
+		<style>
+		form {
+			left: 35%;
+			right:35%;
+			width: 500px;
+			height: 900px;
+			margin-top: 70px;
+			position: absolute;
+			font-size: 26px;
+			font-family: Luminari;
+			font-weight: 900;	
+			background: rgba(255, 255, 255, 0.75);		
+		}
+		.Submit{
+			background-color: #8B0000;
+			border: black;
+			border-style: inset;
+			border-width: 5px;
+			color: white;
+			padding: 12px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 2px 2px;
+			cursor: pointer;
+			transition-duration: 0.4s;
+		}
+		body{
+			background-image: url("https://wallpaperaccess.com/full/1691682.jpg");
+			background-size: cover;
+		}
+		#map{
+			height: 300px;
+			width: 100%;
+			
+		}
+		</style>
+	<body>
+		<form class="formSquare">
+			<label>Name of the task</label>
+			<input type="text" id="taskName">
+			</br>
+			</br>
+			<label>Type of the task</label>
+			<select name="taskTypes" id="taskType">
+				<option value="exercise">Exercise</option>
+				<option value="study">Study</option>
+				<option value="work">Work</option>
+				<option value="other">Other</option>
+			</select>
+			</br>
+			</br>
+			<label>Date of the task</label>
+			<input type="date" id="taskDate" required>
+			</br>
+			</br>
+			<label>Duration</label>
+			<input type="text" id="taskDuration" required>
+			</br>
+			</br>
+			<label>Location</label>
+			<input type="text" id="taskLocation" placeholder="Search Box" required>
+			<div id="map"></div>
+			</br>
+			</br>
+			<label>Period</label>
+			<input type="time" id="taskPeriodStart">
+			<input type="time" id="taskPeriodEnd">
+			</br>
+			</br>
+			<button class="Submit" type="submit" value="Add Task">Add Task</button>
+		</form>
+		<script src="mapAPI.js"></script>
+		<script src="googlemaps.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ77kYrrGw_NeVsmN6hn4UzfXNryHqHh4&libraries=places&callback=initMap"async defer></script>
+	</body>
+</html>
+

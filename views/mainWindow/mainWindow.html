@@ -1,0 +1,376 @@
+<!-- 
+mainWindow.html
+html for main window that opens on startup
+v4.1 ; 6/5/2020
+
+Author: Tu Phan
+-->
+
+<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Perfect Schedule</title>
+	</head>
+	<style>
+	#boxDate, button{
+		font-family: Luminari;
+		font-size: 16px;
+	}
+	body {
+		overflow-y: auto;
+		height: 200%;
+		overflow-y: scroll;
+		font-family: Luminari;
+		background-image: url("https://wallpaperaccess.com/full/1691713.jpg");
+		background-size: cover;
+	}
+	.header{
+		background: rgba(255, 255, 255, 0.5);
+	}
+
+	.calendar {
+		padding: 0px 25px 30px;
+		width: 50%;
+		background: #1abc;
+		text-align: center;
+		margin-left: 23.5%;
+		
+	}
+
+	.calendar div {
+		margin: 0;
+		padding: 0;
+	}
+
+	.Top-of-calendar {
+		color: white;
+		font-size: 20px;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+	}
+
+	.calendar .prev {
+		text-decoration: blink;
+		padding: 38px 10px;
+		float: left;
+		padding-top: 50px;
+		cursor: pointer;
+		transition-duration: 0.4s;
+		display: inline-block;
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	}
+
+	.calendar .next {
+		text-decoration: blink;
+		padding: 38px 10px;
+		float: right;
+		padding-top: 50px;
+		cursor: pointer;
+		transition-duration: 0.4s;
+		display: inline-block;
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	}
+
+	.weekdays {
+		background-color: gray;
+		margin-top: 10px;
+		padding: 10px 0;
+		display: grid;
+		grid-template-rows: 25px;
+		grid-template-columns: auto auto auto auto auto auto auto;
+	}	
+	.days {
+		background-color: white;
+		display: grid;
+		grid-template-columns: auto auto auto auto auto auto auto;
+	}
+	
+	/* Add media queries for smaller screens */
+	@media screen and (max-width:720px) {
+		.weekdays div, .days div{width: 13.1%;}
+	}
+
+	@media screen and (max-width: 420px) {
+		.weekdays div, .days div {width: 12.5%;}
+		.days div .active {padding: 2px;}
+	}
+
+	@media screen and (max-width: 290px) {
+		.weekdays div, .days div{width: 12.2%;}
+	}
+	h1{
+		text-align: center;
+	}
+	p{
+		text-align: center;
+	}
+	.leftSide{
+			margin-left: 7.5%;
+			padding: 20px;
+			text-align: center;
+			left:0;
+			position: absolute;
+			width: 15%;
+			height: 1350px;
+			box-sizing: border-box;
+			background-color:  #C0C0C0;
+			border:#CCC solid 1px;
+			
+		}
+		.rightSide{
+			margin-right: 7.5%;
+			right: 0;
+			position: absolute;
+			width: 70%;
+			height: 1350px;
+			box-sizing: border-box;
+			background-color: #FFFAFA;
+			border:#CCC solid 1px;
+			display: inline-block;
+		}
+		strong{
+			font-size: 25px;
+		}
+		.button {
+			height: auto;
+			width: auto;
+			background-color: #ADD8E6;
+			border: none;
+			color: black;
+			padding: 15px 32px;
+			text-align: center;
+			font-family: Luminari;
+			text-decoration: blink;
+			display: inline-block;
+			font-size: 20px;
+			margin: 4px 2px;
+			cursor: pointer;
+			transition-duration: 0.4s;
+			box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+			}
+		#delete{
+			position: absolute;
+			font-size: 36px;
+		}
+		#hour{
+			
+		}
+		#ShowTaskSchedule {
+			width: 86%;
+							
+		}
+		#hiddenDictionary{
+			display: none;
+		}
+		.box{
+			display: inline-block;
+			
+		}
+	</style>
+	<body>
+	<div class="header">
+		<h1>Perfect Schedule!</h1>
+		<p>Make your Schedule Perfect</p>
+		<h1>CSS Calendar</h1>
+	</div>
+		<div class="calendar">    
+			<div class="Top-of-calendar">
+
+			<script>
+			
+			</script>
+				<div class="prev" onclick="prevMonth()">&#10094;</div>
+				<div class="next" onclick="nextMonth()">&#10095;</div>
+				<div style="padding-top:35px;">
+					<div id="month">January</div>
+					<div id="year">2020</div>
+					<br>
+				</div>
+			</div>
+			<div class="weekdays">
+				<div>Mon</div>
+				<div>Tue</div>
+				<div>Wed</div>
+				<div>Thu</div>
+				<div>Fri</div>
+				<div>Sat</div>
+				<div>Sun</div>
+			</div>
+				<div class="days" id="days">
+					<button id="boxDate"></button>
+					<button id="boxDate"></button>
+					<button id="boxDate"></button>
+					<button id="boxDate">1</button>
+					<button id="boxDate">2</button>
+					<button id="boxDate">3</button>
+					<button id="boxDate">4</button>
+					<button id="boxDate">5</button>
+					<button id="boxDate">6</button>
+					<button id="boxDate">7</button>
+					<button id="boxDate">8</button>
+					<button id="boxDate">9</button>
+					<button id="boxDate">10</button>
+					<button id="boxDate">11</button>
+					<button id="boxDate">12</button>
+					<button id="boxDate">13</button>
+					<button id="boxDate">14</button>
+					<button id="boxDate">15</button>
+					<button id="boxDate">16</button>
+					<button id="boxDate">17</button>
+					<button id="boxDate">18</button>
+					<button id="boxDate">19</button>
+					<button id="boxDate">20</button>
+					<button id="boxDate">21</button>
+					<button id="boxDate">22</button>
+					<button id="boxDate">23</button>
+					<button id="boxDate">24</button>
+					<button id="boxDate">25</button>
+					<button id="boxDate">26</button>
+					<button id="boxDate">27</button>
+					<button id="boxDate">28</button>
+					<button id="boxDate">29</button>
+					<button id="boxDate">30</button>
+					<button id="boxDate">31</button>
+					<button id="boxDate"></button>
+					<button id="boxDate"></button>
+					<button id="boxDate"></button>
+					<button id="boxDate"></button>
+					<button id="boxDate"></button>
+					<button id="boxDate"></button>
+					<button id="boxDate"></button>
+					<button id="boxDate"></button>
+					
+					
+				</div>
+				<script src="calculateCalendar.js"></script>
+		</div>
+<br>
+<br>
+<div>
+	<div>
+		<div class="leftSide">
+		<form>
+            <input class="button" id="addTask" type="submit" value="Add new task" onclick="handleSubmit1()">
+       
+			<button class="button" onclick="deleteTask()" type="button">Delete Task</button>
+	
+			<input class="button" id="uploadSchedule" type="submit" value="Upload schedule" onclick="handleSubmit2()">
+		</form>
+		</div>
+		
+		<div class="rightSide" id="Schedule">
+			<div id="Date"><strong>Date: 1/1/2020</strong></div>	
+			<div>	
+			<div id="hours" class="box" style="font-size: 20px;">
+				<p style="height:28px">12 a.m</p>
+				<p style="height:28px">1 a.m</p>
+				<p style="height:28px">2 a.m</p>
+				<p style="height:28px">3 a.m</p>
+				<p style="height:28px">4 a.m</p>
+				<p style="height:28px">5 a.m</p>
+				<p style="height:28px">6 a.m</p>
+				<p style="height:28px">7 a.m</p>
+				<p style="height:28px">8 a.m</p>
+				<p style="height:28px">9 a.m</p>
+				<p style="height:28px">10 a.m</p>
+				<p style="height:28px">11 a.m</p>
+				<p style="height:28px">12 p.m</p>
+				<p style="height:28px">1 p.m</p>
+				<p style="height:28px">2 p.m</p>
+				<p style="height:28px">3 p.m</p>
+				<p style="height:28px">4 p.m</p>
+				<p style="height:28px">5 p.m</p>
+				<p style="height:28px">6 p.m</p>
+				<p style="height:28px">7 p.m</p>
+				<p style="height:28px">8 p.m</p>
+				<p style="height:28px">9 p.m</p>
+				<p style="height:28px">10 p.m</p>
+				<p style="height:28px">11 p.m</p>
+
+			</div>
+			<div id="hidenDictionary" class="box" style="display: none;">
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>			
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+				<p style="height:28px; display: none;">f</p>
+			</div>
+			<div id="ShowTaskSchedule" class="box" style="font-size: 20px;">
+			<!--	<div style="top:45px;background-color:red;height: 45px;width: 50px;position: absolute;"></div>			-->
+				
+				
+			</div>
+			<div id="delete" class="box" style="display: none;margin-top: 10px;">
+				<button value="0">delete</button>
+				<button value="1">delete</button>
+				<button value="2">delete</button>
+				<button value="3">delete</button>
+				<button value="4">delete</button>
+				<button value="5">delete</button>
+				<button value="6">delete</button>
+				<button value="7">delete</button>
+				<button value="8">delete</button>
+				<button value="9">delete</button>
+				<button value="10">delete</button>
+				<button value="11">delete</button>
+				<button value="12">delete</button>
+				<button value="13">delete</button>
+				<button value="14">delete</button>
+				<button value="15">delete</button>
+				<button value="16">delete</button>
+				<button value="17">delete</button>
+				<button value="18">delete</button>
+				<button value="19">delete</button>
+				<button value="20">delete</button>
+				<button value="21">delete</button>
+				<button value="22">delete</button>
+				<button value="23">delete</button>
+				
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+		<div id="taskInfo">
+
+		</div>
+		<script src="mainWindow.js"></script>
+		<script>
+		function deleteTask(){
+			var y = document.querySelectorAll('#delete');
+			for (var i = 0; i<=y.length; i++){
+				if (y[i].style.display == "none"){
+					y[i].style.display = "inline-block";
+				} else {
+					y[i].style.display = "none";
+				}
+			}
+		}
+
+		</script>
+	</body>
+</html>
+
+
+
+

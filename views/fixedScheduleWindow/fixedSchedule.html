@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+		<title>Add Task</title>
+		
+	</head>
+		<style>
+		form {
+			left: 35%;
+			right: 35%;
+			width: 500px;
+			height: 750px;
+			margin-top: 70px;
+			position: relative;
+			font-size: 26px;
+			font-family: Luminari;
+			font-weight: 900;	
+			background: rgba(255, 255, 255, 0.75);		
+		}
+		.Submit{
+			background-color: #8B0000;
+			border: black;
+			border-style: inset;
+			border-width: 5px;
+			color: white;
+			padding: 12px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 2px 2px;
+			cursor: pointer;
+			transition-duration: 0.4s;
+		}
+		#instruction{
+			font-size: 14px;
+		}
+		#weekDayOption{
+			display: none;
+		}
+		body{
+			background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ5L1_9zJ3RaJLfYb-IdjzdxZxffaP5fvh0Qy0WLZjaT165B8HS");
+			background-size: cover;
+		}
+		.calendar {
+				padding: 0px 20px 20px;
+				width: 92%;
+				background: #1abc;
+				text-align: center;
+				
+			}
+
+			.calendar div {
+				margin: 0;
+				padding: 0;
+			}
+
+			.Top-of-calendar {
+				color: white;
+				text-transform: uppercase;
+				letter-spacing: 3px;
+			}
+
+			.calendar .prev {
+				text-decoration: blink;
+				padding: 15px 10px;
+				float: left;
+				padding-top: 20px;
+				cursor: pointer;
+				transition-duration: 0.4s;
+				display: inline-block;
+				box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+				font-size: 15px;
+			}
+
+			.calendar .next {
+				text-decoration: blink;
+				padding: 15px 10px;
+				float: right;
+				padding-top: 20px;
+				cursor: pointer;
+				transition-duration: 0.4s;
+				display: inline-block;
+				box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+				font-size: 15px;
+			}
+
+			.weekdays {
+				background-color: gray;
+				font-size: 15px;
+				display: grid;
+				grid-template-rows: 25px;
+				grid-template-columns: auto auto auto auto auto auto auto;
+			}	
+			.days {
+				background-color: white;
+				display: grid;
+				grid-template-columns: auto auto auto auto auto auto auto;
+			}
+			#month {
+				font-size: 12px;
+				padding-top: 15px;
+			}
+			#year{
+				font-size: 12px;
+				padding-bottom: 10px;
+
+			}
+			#dateOption{
+				display: none;
+				position: relative;
+				left: 35%;
+				right: 35%;
+			}
+			#Map{
+				height:300px;
+				width: 100%;
+			}
+			
+			@media screen and (max-width:720px) {
+					.weekdays div, .days div{width: 13.1%;}
+				}
+
+				@media screen and (max-width: 420px) {
+					.weekdays div, .days div {width: 12.5%;}
+					.days div .active {padding: 2px;}
+				}
+
+				@media screen and (max-width: 290px) {
+					.weekdays div, .days div{width: 12.2%;}
+				}
+
+		</style>
+	<body>
+	<label>Fixed Schedule</label>
+	<div>
+		<form class="formSquare">
+			<label>Name of the task</label>
+			<input type="text" id="taskName">
+			</br>
+			</br>
+			<label>Task Start at</label>
+			<input type="time" id="taskStart">
+			</br>
+			</br>
+			<label>Task End at</label>
+			<input type="time" id="taskEnd">
+			</br>
+			</br>
+			<label>Location</label>
+			<input type="text" id="taskLocation">
+			<div id="Map"></div>
+			
+			</br>
+			</br>
+			<label>Frequency</label>
+			<select name="taskFrequency" id="taskFrequency" onchange="Other(this);">
+				<option value="everday">Everyday</option>
+				<option value="weekDay">Days in One Week</option>
+				<option value="custom">Custom</option>
+			</select>
+			</br>
+			</br>
+			<div id="weekDayOption" name="weekDays" multiple style="font-size: 11px;">
+					<input id="monday"type="checkbox" value="Monday"><label>Monday</label>
+					<input id="tuesday"type="checkbox" value="Tuesday"><label>Tuesday</label>
+					<input id="wednesday"type="checkbox" value="Wednesday"><label>Wednesday</label>
+					<input id="thursday"type="checkbox" value="Thursday"><label>Thursday</label>
+					<input id="friday"type="checkbox" value="Friday"><label>Friday</label>
+					<input id="saturday"type="checkbox" value="Saturday"><label>Saturday</label>
+					<input id="sunday"type="checkbox" value="Sunday"><label>Sunday</label>
+			</div>
+			
+			<button class="Submit" type="submit" value="Add Task">Add Task</button>
+		</form>
+		<div id="dateOption">
+			<label>Dates</label>
+			<input type="text" id="datePicker" value="" size="50">
+			<div class="calendar">    
+				<div class="Top-of-calendar">
+					<div class="prev" onclick="prevMonth()">&#10094;</div>
+					<div class="next" onclick="nextMonth()">&#10095;</div>
+					<div>
+						<div id="month">January</div>
+						<div id="year">2020</div>
+					</div>
+				</div>
+				<div class="weekdays">
+					<div>Mon</div>
+					<div>Tue</div>
+					<div>Wed</div>
+					<div>Thu</div>
+					<div>Fri</div>
+					<div>Sat</div>
+					<div>Sun</div>
+				</div>
+					<div class="days" id="day">
+						<button id="box1"></button>
+						<button id="box2"></button>
+						<button id="box3"></button>
+						<button id="box4">1</button>
+						<button id="box5">2</button>
+						<button id="box6">3</button>
+						<button id="box7">4</button>
+						<button id="box8">5</button>
+						<button id="box9">6</button>
+						<button id="box10">7</button>
+						<button id="box11">8</button>
+						<button id="box12">9</button>
+						<button id="box13">10</button>
+						<button id="box14">11</button>
+						<button id="box15">12</button>
+						<button id="box16">13</button>
+						<button id="box17">14</button>
+						<button id="box18">15</button>
+						<button id="box19">16</button>
+						<button id="box20">17</button>
+						<button id="box21">18</button>
+						<button id="box22">19</button>
+						<button id="box23">20</button>
+						<button id="box24">21</button>
+						<button id="box25">22</button>
+						<button id="box26">23</button>
+						<button id="box27">24</button>
+						<button id="box28">25</button>
+						<button id="box29">26</button>
+						<button id="box30">27</button>
+						<button id="box31">28</button>
+						<button id="box32">29</button>
+						<button id="box33">30</button>
+						<button id="box34">31</button>
+						<button id="box35"></button>
+						<button id="box36"></button>
+						<button id="box37"></button>
+						<button id="box38"></button>
+						<button id="box39"></button>
+						<button id="box37"></button>
+						<button id="box38"></button>
+						<button id="box39"></button>
+					</div>
+					<script src="calculateCalendarCopy.js"></script>
+			</div>
+				<script src="CustomDates.js"></script>
+		</div>
+		</div>
+		<script src="fixedSchedule.js"></script>
+		<script>
+		function Other(OptionSelect){
+				taskFrequencyValue = document.getElementById("taskFrequency").value;
+				if (taskFrequencyValue == "weekDay"){
+					document.getElementById("weekDayOption").style.display = "block";
+					document.getElementById("dateOption").style.display = "none";
+				}
+				else if (taskFrequencyValue == "custom"){
+					document.getElementById("weekDayOption").style.display = "none";
+					document.getElementById("dateOption").style.display = "inline-block";
+				}else{
+					document.getElementById("weekDayOption").style.display = "none";
+					document.getElementById("dateOption").style.display = "none";
+				}
+		}
+		
+		</script>
+		<script src="mapAPIfixedSchedule.js"></script>
+		<script src="googlemaps.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ77kYrrGw_NeVsmN6hn4UzfXNryHqHh4&libraries=places&callback=initMap"async defer></script>
+		<script type="text/javascript" src="fixedSchedule.js"></script>
+	</body>
+</html>
+
+
